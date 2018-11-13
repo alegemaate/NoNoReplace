@@ -10,7 +10,9 @@
   "options_page": "content/options.html",
   "page_action": {
     "default_popup": "content/exampleInterface.html",
-    "64": "img/default_icon_64.png"
+    "default_icon": {
+      "64": "img/default_icon_64.png"
+    }
   },
   "icons": {
     "64": "img/default_icon_64.png"
