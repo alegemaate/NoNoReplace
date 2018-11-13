@@ -2,5 +2,17 @@
   "name": "No No Replacer",
   "version": "1.0",
   "description": "Replace no no words with safer alternatives.",
+  "permissions": ["declarativeContent", "storage"],
+  "background": {
+	  "scripts": ["js/background.js"],
+	  "persistent": false
+	},
+  "page_action": {
+    "default_popup": "content/exampleInterface.html",
+    "64": "img/default_icon_64.png"
+  },
+  "icons": {
+    "64": "img/default_icon_64.png"
+  },
   "manifest_version": 2
 }
