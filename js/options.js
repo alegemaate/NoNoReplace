@@ -5,35 +5,35 @@ var wordList = null;
 function saveWord() {
   var word = document.getElementById('wordToReplace');
   var replacement = document.getElementById('alternativeWord');
-  
+
   // Add key value
   wordList["words"][word.value] = replacement.value;
-  
-  chrome.storage.sync.set(wordList, 
-    function() {
+
+  chrome.storage.sync.set(wordList,
+    function () {
       console.log('Settings saved');
     }
   );
-  
+
   word.value = "";
   replacement.value = "";
-  
+
   loadWord();
 }
 
 // Load Word
 function loadWord() {
   chrome.storage.sync.get(
-    'words', 
-    function(result) {
+    'words',
+    function (result) {
       populateWords(result);
       wordList = result;
-      
+
       // If empty keep words list
       if (wordList["words"] == null) {
         wordList["words"] = {};
       }
-      
+
       console.log('Value currently is ' + JSON.stringify(result, null, 4));
     }
   );
@@ -41,18 +41,18 @@ function loadWord() {
 
 // Load Word
 function removeWord(word) {
-  
+
   delete wordList["words"][word];
-  
+
   chrome.storage.sync.clear();
-  
+
   // Add key value
-  chrome.storage.sync.set(wordList, 
-    function() {
+  chrome.storage.sync.set(wordList,
+    function () {
       console.log('Word ' + word + ' removed.');
     }
   );
-  
+
   loadWord();
 }
 
@@ -60,7 +60,7 @@ function removeWord(word) {
 function populateWords(words) {
   // Get wordList div
   var wordListDisplay = document.getElementById('wordListDisplay');
-  
+
   // Check if it exists
   if (wordListDisplay == null) {
     console.log('wordListDisplay does not exist');
@@ -68,17 +68,25 @@ function populateWords(words) {
   else {
     // Clear it
     wordListDisplay.innerHTML = "";
-    
+
     // Fill it
-    for (var i in words["words"]) {
-      wordListDisplay.innerHTML += "<p>" + i + " -> " + words["words"][i] + "</p>";
-      wordListDisplay.innerHTML += "<button id='remove_" + i + "'>Remove Word</button>"
-      document.getElementById("remove_" + i).addEventListener(
-        "click", 
-        function(){
-          removeWord(i);
-        }
-      );
+    for (let bannedWord in words["words"]) {
+      const row = document.createElement("tr");
+
+      const descriptionField = document.createElement("td");
+      descriptionField.appendChild(document.createTextNode(bannedWord + " => " + words["words"][bannedWord]));
+      row.appendChild(descriptionField);
+
+      const buttonField = document.createElement("td");
+      const button = document.createElement("button");
+      button.appendChild(document.createTextNode("Remove Word"));
+      button.onclick = event => {
+        removeWord(bannedWord);
+      };
+      buttonField.appendChild(button);
+      row.appendChild(buttonField);
+
+      wordListDisplay.appendChild(row);
     }
   }
 }
