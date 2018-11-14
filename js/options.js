@@ -39,6 +39,23 @@ function loadWord() {
   );
 }
 
+// Load Word
+function removeWord(word) {
+  
+  delete wordList["words"][word];
+  
+  chrome.storage.sync.clear();
+  
+  // Add key value
+  chrome.storage.sync.set(wordList, 
+    function() {
+      console.log('Word ' + word + ' removed.');
+    }
+  );
+  
+  loadWord();
+}
+
 // Populate word list
 function populateWords(words) {
   // Get wordList div
@@ -54,7 +71,14 @@ function populateWords(words) {
     
     // Fill it
     for (var i in words["words"]) {
-      wordListDisplay.innerHTML += "<p>" + i + "</p>";
+      wordListDisplay.innerHTML += "<p>" + i + " -> " + words["words"][i] + "</p>";
+      wordListDisplay.innerHTML += "<button id='remove_" + i + "'>Remove Word</button>"
+      document.getElementById("remove_" + i).addEventListener(
+        "click", 
+        function(){
+          removeWord(i);
+        }
+      );
     }
   }
 }
