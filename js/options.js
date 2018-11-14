@@ -92,5 +92,4 @@ function clearWords() {
 loadWord();
 
 document.getElementById("save").addEventListener("click", saveWord);
-document.getElementById("load").addEventListener("click", loadWord);
 document.getElementById("clear").addEventListener("click", clearWords);
