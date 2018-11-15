@@ -7,7 +7,8 @@ function replaceWords() {
         let currentNode;
         while (currentNode = iter.nextNode()) {
           for (let bannedWord in result["words"]) {
-            currentNode.textContent = currentNode.textContent.replace(bannedWord, result["words"][bannedWord]);
+						var wordRegex = new RegExp(bannedWord,'gi');
+            currentNode.textContent = currentNode.textContent.replace(wordRegex, result["words"][bannedWord]);
           }
         }
       }
