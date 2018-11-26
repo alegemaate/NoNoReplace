@@ -2,17 +2,28 @@
   "name": "No No Replacer",
   "version": "1.0",
   "description": "Replace no no words with safer alternatives.",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage"
+  ],
   "background": {
-	  "scripts": ["js/background.js"],
-	  "persistent": false
-	},
-  "content_scripts": [{
-    "js": [
-        "js/replace.js"
+    "scripts": [
+      "js/background.js"
     ],
-    "matches": ["*://*/*"]
-  }],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "js/replace.js"
+      ],
+      "matches": [
+        "*://*/*"
+      ],
+      "all_frames": true
+    }
+  ],
   "options_page": "content/options.html",
   "page_action": {
     "default_icon": {
