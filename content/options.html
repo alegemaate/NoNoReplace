@@ -13,9 +13,9 @@
       }
 
       .title {
-        font-size: 100px;
+        font-size: 90px;
         text-align: center;
-        margin: 20px 50px;
+        margin: 20px 50px 10px;
         color: #e2ca68;
       }
 
@@ -27,7 +27,7 @@
       }
 
       .intro-text-container {
-        margin: 10px 100px 40px;
+        margin: 10px 200px 40px;
       }
 
       .center-outer-container {
@@ -36,7 +36,7 @@
 
       .text-input-container {
         display: inline-block;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 4px solid #b8988b;
         padding: 0px 70px 30px 70px;
         
@@ -55,9 +55,10 @@
       .input-field {
         width: 280px;
         height: 20px;
-        border-radius: 5px;
-        margin: 8px 15px;
+        border-radius: 7px;
+        margin: 2px 15px;
         border: none;
+        float: right;
       }
 
       .button {
@@ -79,7 +80,7 @@
       .word-list-title {
         color: #c73234;
         font-size: 36px;
-        margin-top: 60px;
+        margin-top: 40px;
       }
 
     
@@ -103,11 +104,15 @@
     <div class="center-outer-container">
       <div class="text-input-container" id="wordInput">
         <p class="subtitle">ENTER WORDS TO CENSOR:</p>
-        <label class="input-label" for='wordToReplace'>Word to Replace:</label>
-        <input class="input-field" id='wordToReplace' type='text'></input>
+        <div>
+          <label class="input-label" for='wordToReplace'>Word to Replace:</label>
+          <input class="input-field" id='wordToReplace' type='text'></input>
+        </div>
         <br>
-        <label class="input-label" for='alternativeWord'>Alternative Word:</label>
-        <input class="input-field" id='alternativeWord' type='text'></input>
+        <div>
+          <label class="input-label" for='alternativeWord'>Alternative Word:</label>
+          <input class="input-field" id='alternativeWord' type='text'></input>
+        </div>
         <br>
     
         <br>
