@@ -13,6 +13,7 @@ function doRecursiveReplace(target, replacements) {
     replaced = getReplacementString(currentNode.textContent, replacements);
     if (replaced !== currentNode.textContent) {
       currentNode.textContent = replaced;
+      console.log(replaced);
     }
   }
 }
@@ -21,10 +22,7 @@ function doRecursiveReplace(target, replacements) {
 function setupMutationObserver(replacements) {
   const observer = new MutationObserver((mutationsList, observer) => {
     for (let mut of mutationsList) {
-      replaced = getReplacementString(mut.target.textContent, replacements);
-      if (replaced !== mut.target.textContent) {
-        mut.target.textContent = replaced;
-      }
+      doRecursiveReplace(mut.target, replacements);
     }
   });
   observer.observe(document.body, { characterData: true, subtree: true, attributes: false, childList: true });
@@ -45,7 +43,7 @@ function getReplacementString(text, replacements) {
         changed = true;
       }
     }
-    if (!changed) {
+    if (changed) {
       return result;
     }
   }
@@ -70,4 +68,6 @@ function getReplacmentsAsync() {
     );
   });
 }
+
+// Calls initial replacement
 replaceWords()
