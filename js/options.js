@@ -98,7 +98,15 @@ function clearWords() {
   loadWord();
 }
 
+// Create censor word
+function enterAlt() {
+  var censorLen = document.getElementById('wordToReplace').value.length + 1;
+  var censorChar = '▓';
+  document.getElementById('alternativeWord').value = censorChar.repeat(censorLen);
+}
+
 loadWord();
 
+document.getElementById("wordToReplace").addEventListener("keypress", enterAlt);
 document.getElementById("save").addEventListener("click", saveWord);
 document.getElementById("clear").addEventListener("click", clearWords);
