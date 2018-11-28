@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset=utf-8>
 <html>
   <head>
     <style>
@@ -27,7 +28,7 @@
       }
 
       .intro-text-container {
-        margin: 10px 200px 40px;
+        margin: 20px 10% 40px;
       }
 
       .center-outer-container {
@@ -70,6 +71,7 @@
         margin: 5px 50px;
         font-size: 15px;
         color: #3c312d;
+        font-family:Impact, sans-serif;
       }
 
       .button:focus {
@@ -81,6 +83,21 @@
         color: #c73234;
         font-size: 36px;
         margin-top: 40px;
+      }
+      
+      table {
+        width: 100%;
+        margin: 0 auto;
+      }
+      
+      td {
+        font-size: 24px;
+        color: #FFF;
+      }
+      
+      table .button {
+        display: block;
+        margin-right: 0;
       }
 
     
@@ -121,8 +138,10 @@
         <br>
       </div>
     </div>
+    <br>
+    <br>
     <div class="center-outer-container">
-      <div>
+      <div class="text-input-container" id="wordInput">
         <p class="word-list-title">LIST OF CENSORED WORDS:</p>
         <table id="wordListDisplay"></table>
       </div>

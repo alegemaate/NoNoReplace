@@ -74,11 +74,12 @@ function populateWords(words) {
       const row = document.createElement("tr");
 
       const descriptionField = document.createElement("td");
-      descriptionField.appendChild(document.createTextNode(bannedWord + " => " + words["words"][bannedWord]));
+      descriptionField.appendChild(document.createTextNode(bannedWord + " -> " + words["words"][bannedWord]));
       row.appendChild(descriptionField);
 
       const buttonField = document.createElement("td");
       const button = document.createElement("button");
+      button.setAttribute("class", "button");
       button.appendChild(document.createTextNode("Remove Word"));
       button.onclick = event => {
         removeWord(bannedWord);
