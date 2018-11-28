@@ -100,13 +100,13 @@ function clearWords() {
 
 // Create censor word
 function enterAlt() {
-  var censorLen = document.getElementById('wordToReplace').value.length + 1;
+  var censorLen = document.getElementById('wordToReplace').value.length;
   var censorChar = '▓';
   document.getElementById('alternativeWord').value = censorChar.repeat(censorLen);
 }
 
 loadWord();
 
-document.getElementById("wordToReplace").addEventListener("keypress", enterAlt);
+document.getElementById("wordToReplace").addEventListener("keyup", enterAlt);
 document.getElementById("save").addEventListener("click", saveWord);
 document.getElementById("clear").addEventListener("click", clearWords);
