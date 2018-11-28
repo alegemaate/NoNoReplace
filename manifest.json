@@ -4,12 +4,11 @@
   "description": "Replace no no words with safer alternatives.",
   "permissions": [
     "activeTab",
-    "declarativeContent",
     "storage"
   ],
   "background": {
     "scripts": [
-      "js/background.js"
+      "js/replace.js"
     ],
     "persistent": false
   },
