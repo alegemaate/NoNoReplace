@@ -43,7 +43,7 @@ function getReplacementString(text, replacements) {
         changed = true;
       }
     }
-    if (changed) {
+    if (!changed) { // no need to run again if the last run made no changes
       return result;
     }
   }
